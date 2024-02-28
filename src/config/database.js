@@ -1,12 +1,14 @@
-import knex, { knex } from "knex";
+import knex from "knex";
 
-const knex = knex({
-    client: 'mysql',
+const knexConfig ={
+    client: 'mysql2',
     connection:{
-        host: '127.0.0.1',
+        host: process.env.DB_HOST||'127.0.0.1',
         port: 3306,
-        user: '',
-        password: '',
-        database: 'myapp_test'
-    },
-});
+        user: process.env.DB_USER||'user',
+        password: process.env.DB_PASSWORD||'password',
+        database: process.env.DB_NAME||'db'
+    }
+};
+
+export default knexConfig;
