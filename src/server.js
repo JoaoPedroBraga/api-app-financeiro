@@ -1,9 +1,9 @@
 import express from 'express';
-import useRoute from './modules/user/user.route.js'
+import userRoute from './modules/user/user.route.js'
 const app = express();
 app.use(express.json());
 
-app.use('/user', useRoute);
+app.use('/user', userRoute);
 
 app.get('/health', (_, res) => {
     return res.send('Sistema está Operacional');
