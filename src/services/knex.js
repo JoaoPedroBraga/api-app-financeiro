@@ -11,4 +11,4 @@ const knexService = () => {
       return conn;
 }
 
-export default knexService;
+export default knexService();

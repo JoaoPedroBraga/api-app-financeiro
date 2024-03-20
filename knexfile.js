@@ -1,4 +1,4 @@
-import knexConfig from "./src/config/database.js"
+import knexConfig from "./src/config/database.js";
 export default {
   development: knexConfig
 }
