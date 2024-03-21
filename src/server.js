@@ -13,7 +13,5 @@ app.get('/health', (_, res) => {
 })
 
 app.listen(8080, async () => {
-    const res = await knex('users');
-    console.log('result', res);
     console.log('Rodando na Porta 8080');
 });
