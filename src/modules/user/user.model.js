@@ -1,8 +1,10 @@
 import bcrypit from 'bcrypt';
 import knex from '../../services/knex.js';
 
+const TABLE = 'users';
+
 export const getAll = () =>{
-    return knex("users").select(
+    return knex(TABLE).select(
         "id",
         "name",
         "email",
@@ -12,7 +14,7 @@ export const getAll = () =>{
 };
 
 export const get = (id) => {
-    return knex("users")
+    return knex(TABLE)
     .where({id})
     .select("id","name","email","created_at","updated_at")
     .first();
@@ -20,13 +22,17 @@ export const get = (id) => {
 
 export const save = (params) => {
     params.password = bcrypit.hashSync(params.password, 10);
-    return knex("users").insert(params);
+    return knex(TABLE).insert(params);
 };
 
 export const remove = (id) => {
-    return knex("users").delete({id});
+    return knex(TABLE).delete({id});
 };
 
 export const update = (id, params) => {
-    return knex("users").where({id}).update(params);
+    return knex(TABLE).where({id}).update(params);
+}
+
+export const getByEmail = (email) => {
+    return knex(TABLE).where({email}).first();
 }
