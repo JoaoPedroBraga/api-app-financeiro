@@ -1,11 +1,16 @@
 import { Router } from "express";
-import { getAll, get, save, update, remove } from '../user/index.js';
+import { getAll, get, save, update, remove, getMe } from '../user/index.js';
+import { authMiddleware } from '../../middleware/authMiddleware.js'
 
 export const router = Router();
 
 router.get('/', async (_, res) => {
     const data = await getAll();
     res.status(200).json({ data });
+}),
+
+router.get('/me',authMiddleware, async (req, res) => {
+   return res.status(200).json({ data: req.user });
 }),
 
 
