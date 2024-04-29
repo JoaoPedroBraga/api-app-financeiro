@@ -20,9 +20,9 @@ export const save = (params) => {
 };
 
 export const remove = (id, userId) => {
-    return knex(TABLE).delete({id}).where({'user_id' : userId});
+    return knex(TABLE).delete().where({id}).andWhere({'user_id' : userId});
 };
 
 export const update = (id, params, userId) => {
-    return knex(TABLE).where({id}).where({'user_id' : userId}).update(params);
+    return knex(TABLE).where({id}).andWhere({'user_id' : userId}).update(params);
 }
