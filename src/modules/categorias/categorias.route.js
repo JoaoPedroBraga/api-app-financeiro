@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getAll, get, save, update, remove } from '../user/index.js';
+import { getAll, get, save, update, remove } from '../categorias/index.js';
 import { authMiddleware } from '../../middleware/authMiddleware.js'
 
 export const router = Router();
 
-router.get('/', authMiddleware, async (_, res) => {
+router.get('/', authMiddleware, async (req, res) => {
     const data = await getAll(req.user.id);
     res.status(200).json({ data });
 }),
